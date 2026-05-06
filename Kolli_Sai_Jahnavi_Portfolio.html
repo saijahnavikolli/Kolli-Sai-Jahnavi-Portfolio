@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kolli Sai Jahnavi — Product Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1b2d;
+    --navy-mid: #1a2d45;
+    --teal: #00c9a7;
+    --teal-light: #00e5c0;
+    --amber: #f5a623;
+    --slate: #8a9bbf;
+    --light: #f4f7fc;
+    --white: #ffffff;
+    --card-bg: #162236;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    line-height: 1.6;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0a1628 0%, #162236 60%, #0f2040 100%);
+    padding: 64px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,201,167,0.12) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 30%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,166,35,0.07) 0%, transparent 70%);
+  }
+
+  .hero-inner { max-width: 860px; margin: 0 auto; position: relative; }
+
+  .name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 6vw, 60px);
+    letter-spacing: -1px;
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+  .name span { color: var(--teal); }
+
+  .title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--slate);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .contact-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: var(--slate);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .contact-pill:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+    background: rgba(0,201,167,0.08);
+  }
+  .contact-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+
+  /* LIVE PROJECT BANNER */
+  .live-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(90deg, rgba(0,201,167,0.15), rgba(0,201,167,0.05));
+    border: 1px solid rgba(0,201,167,0.35);
+    border-radius: 10px;
+    padding: 12px 20px;
+    margin-bottom: 0;
+  }
+  .live-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--teal);
+    animation: pulse 1.8s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+  .live-banner a {
+    color: var(--teal-light);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .live-banner a:hover { text-decoration: underline; }
+  .live-label {
+    background: var(--teal);
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+
+  /* MAIN LAYOUT */
+  .main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 32px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 32px;
+    align-items: start;
+  }
+
+  /* SECTION */
+  .section { margin-bottom: 36px; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(0,201,167,0.2);
+  }
+
+  /* SUMMARY */
+  .summary-text {
+    font-size: 15px;
+    color: #c5cfe0;
+    line-height: 1.75;
+  }
+
+  /* EXPERIENCE */
+  .exp-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 14px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .exp-card:hover { border-color: rgba(0,201,167,0.3); }
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 18px; bottom: 18px;
+    width: 3px;
+    background: var(--teal);
+    border-radius: 0 2px 2px 0;
+    opacity: 0.5;
+  }
+
+  .exp-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .exp-role {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--white);
+  }
+  .exp-date {
+    font-size: 12px;
+    color: var(--amber);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .exp-company {
+    font-size: 13px;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+  .exp-bullets {
+    list-style: none;
+    padding: 0;
+  }
+  .exp-bullets li {
+    font-size: 13.5px;
+    color: #b0bdd4;
+    padding: 4px 0 4px 16px;
+    position: relative;
+    line-height: 1.55;
+  }
+  .exp-bullets li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+    font-weight: 700;
+  }
+
+  /* PROJECTS */
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    transition: border-color 0.2s;
+  }
+  .project-card:hover { border-color: rgba(0,201,167,0.3); }
+  .project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .project-name {
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .project-links {
+    display: flex;
+    gap: 8px;
+  }
+  .project-link {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  .project-link:hover { opacity: 0.8; }
+  .link-live {
+    background: rgba(0,201,167,0.15);
+    border: 1px solid rgba(0,201,167,0.4);
+    color: var(--teal);
+  }
+  .link-figma {
+    background: rgba(245,166,35,0.12);
+    border: 1px solid rgba(245,166,35,0.35);
+    color: var(--amber);
+  }
+  .link-canva {
+    background: rgba(138,91,255,0.12);
+    border: 1px solid rgba(138,91,255,0.35);
+    color: #b48aff;
+  }
+  .link-prd {
+    background: rgba(96,165,250,0.12);
+    border: 1px solid rgba(96,165,250,0.35);
+    color: #93c5fd;
+  }
+  .project-desc {
+    font-size: 13px;
+    color: #9aaac0;
+    line-height: 1.55;
+  }
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .tag {
+    font-size: 11px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 2px 8px;
+    color: var(--slate);
+  }
+
+  /* SIDEBAR */
+  .sidebar {}
+
+  .skill-group { margin-bottom: 24px; }
+  .skill-group-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--amber);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .skill-pill {
+    font-size: 12px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 4px 10px;
+    color: #c5cfe0;
+  }
+  .skill-pill.highlight {
+    background: rgba(0,201,167,0.1);
+    border-color: rgba(0,201,167,0.3);
+    color: var(--teal-light);
+  }
+
+  .edu-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+  .edu-degree { font-size: 13px; font-weight: 600; color: var(--white); }
+  .edu-school { font-size: 12px; color: var(--teal); margin-top: 2px; }
+  .edu-year { font-size: 11px; color: var(--slate); margin-top: 2px; }
+
+  .cert-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 12.5px;
+    color: #a0b0c8;
+  }
+  .cert-icon { color: var(--amber); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+  /* FOOTER */
+  .resume-footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  @media (max-width: 700px) {
+    .main { grid-template-columns: 1fr; padding: 24px 20px; }
+    .hero { padding: 40px 24px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="name">Kolli Sai <span>Jahnavi</span></div>
+    <div class="title">Product Analyst &nbsp;·&nbsp; EdTech SaaS &nbsp;·&nbsp; AI-Fluent PM</div>
+
+    <div class="contact-row">
+      <a class="contact-pill" href="mailto:kollisaijahnavi@gmail.com"><span class="dot"></span>kollisaijahnavi@gmail.com</a>
+      <a class="contact-pill" href="https://linkedin.com/in/sai-jahnavi-kolli" target="_blank"><span class="dot"></span>LinkedIn</a>
+      <a class="contact-pill" href="https://sites.google.com/view/saijahnavi-portfolio/home" target="_blank"><span class="dot"></span>Portfolio Site</a>
+      <span class="contact-pill"><span class="dot"></span>Hyderabad, India</span>
+      <span class="contact-pill"><span class="dot"></span>Open to Remote &amp; Hybrid</span>
+    </div>
+
+    <div class="live-banner">
+      <div class="live-dot"></div>
+      <span class="live-label">LIVE</span>
+      <a href="https://ff5d9a56-fbbe-4fe9-b11d-e37393aaf62f-00-ihge5h5uvgr0.pike.replit.dev:5000/" target="_blank">
+        MockMate AI — Voice Interview Practice App &nbsp;→
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <!-- LEFT COLUMN -->
+  <div class="left">
+
+    <!-- SUMMARY -->
+    <div class="section">
+      <div class="section-label">About</div>
+      <p class="summary-text">
+        Product Analyst with 4+ years of end-to-end feature ownership in EdTech SaaS, spanning discovery, PRD writing, Figma prototyping, QA, and post-launch validation. Experienced shipping AI-powered tools across Teacher, Student, Parent, and Admin portals. Active AI practitioner — building portfolio projects with LLMs to accelerate product decision-making.
+      </p>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section">
+      <div class="section-label">Experience</div>
+
+      <div class="exp-card">
+        <div class="exp-top">
+          <div class="exp-role">Product Analyst</div>
+          <div class="exp-date">2020 – Present</div>
+        </div>
+        <div class="exp-company">Coschool · EdTech SaaS · Hyderabad</div>
+        <ul class="exp-bullets">
+          <li>Owned end-to-end feature delivery across Teacher, Student, Parent and Admin portals — from requirements and design to QA and release.</li>
+          <li>Wrote PRDs, user stories, and acceptance criteria; led sprint planning and backlog grooming in Agile/Scrum cycles.</li>
+          <li>Conducted UX audits and user research; translated findings into Figma prototypes reviewed with engineering and design.</li>
+          <li>Led dogfooding sessions and post-launch validation cycles to track feature adoption and surface regressions early.</li>
+          <li>Owned end-to-end feature development for Krishna AI (onboarding tool) — documentation, QA, and video-based content creation using Canva, Comet, and Adobe Express.</li>
+          <li>Managed device administration (Google Family Link, Samsung tablets) and drove MDM evaluation using Google Workspace for Education.</li>
+          <li>Collaborated cross-functionally with Engineering, QA, Marketing, and Design to ship releases on schedule.</li>
+          <li>Drove significant process efficiency improvements through structured sprint retrospectives and workflow automation.</li>
+          <li>Achieved significant increase in user satisfaction scores through targeted UX improvements informed by user research.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-top">
+          <div class="exp-role">App Developer</div>
+          <div class="exp-date">Prior</div>
+        </div>
+        <div class="exp-company">SIF</div>
+        <ul class="exp-bullets">
+          <li>Built mobile features using Flutter; contributed to end-to-end delivery cycles including QA and release.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="section">
+      <div class="section-label">Portfolio Projects</div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <div class="project-name">MockMate AI — Voice Interview Agent</div>
+          <div class="project-links">
+            <a class="project-link link-live" href="https://ff5d9a56-fbbe-4fe9-b11d-e37393aaf62f-00-ihge5h5uvgr0.pike.replit.dev:5000/" target="_blank">↗ Live App</a>
+            <a class="project-link link-prd" href="https://docs.google.com/document/d/1EJ8c6ONjIXtzo58DBCtPHcIk6f0iXZUMfq94QoDTAac/edit?usp=sharing" target="_blank">📄 PRD</a>
+          </div>
+        </div>
+        <p class="project-desc">
+          Full-stack AI mock interview app with voice input/output, animated interviewer avatar, post-interview scorecard (Communication, Confidence, Relevance), and a Recruiter Dashboard with candidate tracking and comparison. Built on Flask + Groq LLM + Web Speech API. Includes full PRD, edge-case analysis, and V1→V2 product roadmap.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Product Strategy</span>
+          <span class="tag">PRD Writing</span>
+          <span class="tag">Groq LLM</span>
+          <span class="tag">Web Speech API</span>
+          <span class="tag">Agile</span>
+          <span class="tag">Figma</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <div class="project-name">Coschool — Class Updates Page Redesign</div>
+          <div class="project-links">
+          </div>
+        </div>
+        <p class="project-desc">
+          End-to-end spec and UX redesign for the student-facing Class Updates page — Chapter Unlock Feed + EDGE Competitive Activity Feed. Defined feature scope, auto-approval logic, subject-scoped EDGE membership rules, and Level Up task behavior. Full PRD with acceptance criteria and QA test cases.
+        </p>
+        <div class="project-tags">
+          <span class="tag">PRD</span>
+          <span class="tag">UX Research</span>
+          <span class="tag">Figma</span>
+          <span class="tag">Feature Spec</span>
+          <span class="tag">EdTech</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <div class="section">
+      <div class="section-label">Skills</div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Product</div>
+        <div class="skill-pills">
+          <span class="skill-pill highlight">PRDs &amp; BRDs</span>
+          <span class="skill-pill highlight">End-to-End Feature Ownership</span>
+          <span class="skill-pill">User Research</span>
+          <span class="skill-pill">UX Audits</span>
+          <span class="skill-pill">A/B Testing</span>
+          <span class="skill-pill">Agile / Scrum</span>
+          <span class="skill-pill">Sprint Planning</span>
+          <span class="skill-pill">Backlog Grooming</span>
+          <span class="skill-pill">Post-launch Validation</span>
+          <span class="skill-pill">Dogfooding</span>
+          <span class="skill-pill">KPI Analysis</span>
+          <span class="skill-pill">Funnel Metrics</span>
+          <span class="skill-pill">Feature Adoption</span>
+          <span class="skill-pill">Stakeholder Management</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Tools</div>
+        <div class="skill-pills">
+          <span class="skill-pill highlight">Figma</span>
+          <span class="skill-pill highlight">Jira</span>
+          <span class="skill-pill">Confluence</span>
+          <span class="skill-pill">Notion</span>
+          <span class="skill-pill">Canva</span>
+          <span class="skill-pill">Comet</span>
+          <span class="skill-pill">Google Sheets</span>
+          <span class="skill-pill">Adobe Express</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Data &amp; Analytics</div>
+        <div class="skill-pills">
+          <span class="skill-pill highlight">SQL (querying &amp; basic data analysis)</span>
+          <span class="skill-pill">Google Analytics</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">AI &amp; Emerging</div>
+        <div class="skill-pills">
+          <span class="skill-pill highlight">Prompt Engineering</span>
+          <span class="skill-pill highlight">LLM Integration (Groq)</span>
+          <span class="skill-pill">Claude AI</span>
+          <span class="skill-pill">ChatGPT</span>
+          <span class="skill-pill">Canva AI</span>
+          <span class="skill-pill">Bolt.new</span>
+          <span class="skill-pill">ElevenLabs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section">
+      <div class="section-label">Education</div>
+      <div class="edu-card">
+        <div class="edu-degree">B.Tech / B.E — Computer Science</div>
+        <div class="edu-school">Hyderabad, India</div>
+      </div>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div class="section">
+      <div class="section-label">Certifications</div>
+      <div class="cert-item"><span class="cert-icon">✦</span>Agile / Scrum Fundamentals</div>
+      <div class="cert-item"><span class="cert-icon">✦</span>Product Management Essentials</div>
+      <div class="cert-item"><span class="cert-icon">✦</span>AI Tools for Product Managers</div>
+    </div>
+
+    <!-- FIGMA PORTFOLIO -->
+    <div class="section">
+      <div class="section-label">Design Portfolio</div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <a class="project-link link-figma" href="https://www.figma.com/design/fLRxHYBhADYlEvXnfeTRg8/Jahnavi-s-Work?node-id=0-1" target="_blank" style="display:inline-block; font-size:12px; padding: 6px 14px;">
+          ✦ Figma Work — Design File 1
+        </a>
+        <a class="project-link link-figma" href="https://www.figma.com/proto/ftBYBRkUOnI9Uga0lLw6pR/Jahnavi-s-work?node-id=1-284&starting-point-node-id=1%3A284" target="_blank" style="display:inline-block; font-size:12px; padding: 6px 14px;">
+          ✦ Figma Work — Prototype
+        </a>
+        <a class="project-link link-figma" href="https://www.figma.com/design/IsVnmTaU22VNJLGv9Z9H8D/Jahnavi-s-work?node-id=0-1&t=NqxZmrCDzfOvNuNo-0" target="_blank" style="display:inline-block; font-size:12px; padding: 6px 14px;">
+          ✦ Figma Work — Design File 2
+        </a>
+        <a class="project-link link-canva" href="https://www.canva.com/design/DAFJFhnI1rs/kAUtcchgQeyjbptG9Oy1HQ/edit" target="_blank" style="display:inline-block; font-size:12px; padding: 6px 14px;">
+          ⬡ Canva Portfolio
+        </a>
+        <a class="project-link link-live" href="https://sites.google.com/view/saijahnavi-portfolio/home" target="_blank" style="display:inline-block; font-size:12px; padding: 6px 14px;">
+          ↗ Google Sites Portfolio
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="resume-footer">
+  Kolli Sai Jahnavi · Product Analyst · Hyderabad, India · Open to Remote &amp; Hybrid Roles
+</div>
+
+</body>
+</html>
